@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Panels — Spot the Difference</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">◉◎</span>
+    <div>
+      <h1>Twin Panels</h1>
+      <p class="tagline">Spot the difference — two pictures, seven changes, one sharp eye.</p>
+    </div>
+  </div>
+  <div class="hud" aria-label="Game status">
+    <span id="hud-scene" class="hud-item">Scene 1 of 3 — Sunny Park</span>
+    <span id="hud-found" class="hud-item found">Found 0 / 7</span>
+    <span id="hud-score" class="hud-item">Score 0</span>
+    <span id="hud-mistakes" class="hud-item">Misses 0</span>
+    <span id="hud-timer" class="hud-item timer">2:30</span>
+    <span id="hud-hints" class="hud-item">Hints 3</span>
+  </div>
+</header>
+
+<div class="timerbar"><div id="timer-fill"></div></div>
+
+<main class="stage">
+  <div class="panels">
+    <figure class="panel">
+      <figcaption>Left — the original</figcaption>
+      <canvas id="panel-left" width="640" height="400"></canvas>
+    </figure>
+    <figure class="panel">
+      <figcaption>Right — spot the changes</figcaption>
+      <canvas id="panel-right" width="640" height="400"></canvas>
+    </figure>
+  </div>
+
+  <div class="underbar">
+    <div id="found-dots" class="dots" aria-label="Differences found"></div>
+    <p id="toast" class="toast" role="status"></p>
+    <div class="actions">
+      <button id="hint-btn" type="button">💡 Hint (H)</button>
+      <button id="restart-btn" type="button">↻ Restart (R)</button>
+    </div>
+  </div>
+
+  <p class="help">Click a difference on either picture — it is ringed on both. Find all 7 before the
+  timer runs out. Keyboard: <kbd>H</kbd> hint, <kbd>R</kbd> restart, <kbd>Enter</kbd> continue,
+  <kbd>1</kbd>–<kbd>3</kbd> pick a scene from the title screen.</p>
+
+  <section id="screen-title" class="screen">
+    <h2>Can you spot all seven?</h2>
+    <p>Three hand-drawn scenes. Seven differences hiding in each one. Some are obvious —
+    most are not. Wrong clicks cost 5 points, hints cost 25. Clear all three scenes for
+    the best score.</p>
+    <div class="scene-cards">
+      <button class="scene-pick" type="button" data-scene="0"><strong>1 · Sunny Park</strong><span>Warm-up</span></button>
+      <button class="scene-pick" type="button" data-scene="1"><strong>2 · Beach Day</strong><span>Tricky</span></button>
+      <button class="scene-pick" type="button" data-scene="2"><strong>3 · Lantern Night Market</strong><span>Sharp eyes</span></button>
+    </div>
+    <button id="play-btn" class="primary" type="button">▶ Play — start with Sunny Park</button>
+  </section>
+
+  <section id="screen-scene-done" class="screen hidden">
+    <h2 id="scene-done-title">Scene cleared!</h2>
+    <p id="scene-done-sub"></p>
+    <button id="next-btn" class="primary" type="button">Next scene →</button>
+  </section>
+
+  <section id="screen-win" class="screen hidden">
+    <h2>🏆 You found them all!</h2>
+    <p class="win-line">Final score <strong id="win-score">0</strong></p>
+    <p>Differences found: <strong id="win-found">0 / 21</strong> · Wrong clicks: <strong id="win-mistakes">0</strong></p>
+    <p>Every scene, every difference — sharp eyes indeed.</p>
+    <button id="again-btn" class="primary" type="button">↻ Play again</button>
+    <button id="title-btn" type="button">Back to title</button>
+  </section>
+
+  <section id="screen-timeup" class="screen hidden">
+    <h2>⏰ Time's up!</h2>
+    <p id="timeup-sub"></p>
+    <p>The remaining differences stay hidden… this time.</p>
+    <button id="retry-btn" class="primary" type="button">↻ Try this scene again</button>
+    <button id="timeup-title-btn" type="button">Back to title</button>
+  </section>
+</main>
+
+<footer class="foot">Twin Panels — an original spot-the-difference game. All art is drawn in code;
+no images, no network, no libraries. Built for make.fun's best spot the difference game bounty.</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
